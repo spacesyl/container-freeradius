@@ -1,0 +1,21 @@
+eap {
+    default_eap_type = tls
+
+    tls-config tls-common {
+        certificate_file = ${certdir}/server.pem
+        private_key_file = ${certdir}/server.key
+
+        ca_path = ${cadir}
+        cipher_list = "HIGH"
+        ecdh_curve = "secp384r1"
+
+        verify {
+            tmpdir = /tmp/radiusd
+            client = "/usr/bin/openssl verify -CAfile ${cadir}/root_ca.pem -untrusted ${cadir}/intermediate_ca.pem %{TLS-Client-Cert-Filename}"
+        }
+    }
+
+    tls {
+        tls = tls-common
+    }
+}
