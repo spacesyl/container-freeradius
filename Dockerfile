@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:latest
+FROM docker.io/library/alpine:3.18.4
 
 RUN apk add --no-cache freeradius freeradius-eap openssl
 
@@ -15,4 +15,4 @@ EXPOSE 1812/udp
 
 USER radius
 ENTRYPOINT ["/usr/sbin/radiusd"]
-CMD ["-f", "-l", "stdout", "-x"]
+MD ["-f", "-l", "stdout", "-x"]
