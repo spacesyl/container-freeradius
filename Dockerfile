@@ -1,6 +1,6 @@
 FROM docker.io/library/alpine:3.18.4
 
-RUN apk add --no-cache freeradius freeradius-eap openssl
+RUN apk add --no-cache freeradius freeradius-eap freeradius-ldap openssl
 
 COPY etc/raddb/mods-available/eap /etc/raddb/mods-available/eap
 COPY etc/raddb/radiusd.conf /etc/raddb/radiusd.conf
