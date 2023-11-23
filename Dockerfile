@@ -15,4 +15,4 @@ EXPOSE 1812/udp
 
 USER radius
 ENTRYPOINT ["/usr/sbin/radiusd"]
-MD ["-f", "-l", "stdout", "-x"]
+CMD ["-f", "-l", "stdout", "-x"]
