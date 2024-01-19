@@ -11,7 +11,7 @@ RUN rm -rf /etc/raddb/certs && mkdir -m700 /etc/raddb/certs && chown radius:radi
 RUN mkdir -m700 /etc/raddb/client.d
 
 VOLUME ["/etc/raddb/certs"]
-EXPOSE 1812/udp
+EXPOSE 1812/udp 1813/udp
 
 USER radius
 ENTRYPOINT ["/usr/sbin/radiusd"]
