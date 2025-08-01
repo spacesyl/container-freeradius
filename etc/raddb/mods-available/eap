@@ -2,12 +2,20 @@ eap {
     default_eap_type = tls
 
     tls-config tls-common {
+        tls_min_version = 1.2
+        tls_max_version = 1.3
+
         certificate_file = ${certdir}/server.crt
         private_key_file = ${certdir}/server.key
 
         ca_path = ${cadir}
         cipher_list = "HIGH"
         ecdh_curve = "secp256r1:secp384r1"
+
+        verify {
+            tmpdir = /tmp/radiusd
+            client = "/usr/bin/openssl verify -CAfile ${cadir}/root_ca.pem -untrusted ${cadir}/intermediate_ca.pem %{TLS-Client-Cert-Filename}"
+        }
     }
 
     tls {
