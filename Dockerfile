@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.22.2
+FROM docker.io/library/alpine:3.23.2
 
 RUN apk add --no-cache freeradius freeradius-eap freeradius-ldap openssl tzdata
 
